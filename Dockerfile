@@ -21,6 +21,7 @@ RUN python -m spacy download en_core_web_sm || true
 
 COPY src/ ./src/
 COPY frontend/ ./frontend/
+COPY data/ ./data/
 
 RUN mkdir -p ./data/models
 
