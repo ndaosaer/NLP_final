@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Analyzer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CV Analyzer</h1>
+            <p class="subtitle">Analysez et classifiez vos CV avec l'IA</p>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <div class="tabs">
+                    <button class="tab active" data-tab="file">Fichier</button>
+                    <button class="tab" data-tab="text">Texte</button>
+                </div>
+
+                <div class="tab-content active" id="file-tab">
+                    <div class="drop-zone" id="drop-zone">
+                        <div class="drop-zone-content">
+                            <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                            <p>Glissez votre CV ici</p>
+                            <p class="drop-zone-hint">ou cliquez pour parcourir</p>
+                            <p class="supported-formats">PDF, DOCX, TXT</p>
+                        </div>
+                        <input type="file" id="file-input" accept=".pdf,.docx,.txt" hidden>
+                    </div>
+                    <div class="file-info" id="file-info" hidden>
+                        <span class="file-name" id="file-name"></span>
+                        <button class="btn-clear" id="clear-file">Supprimer</button>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="text-tab">
+                    <textarea id="text-input" placeholder="Collez le contenu de votre CV ici..."></textarea>
+                </div>
+
+                <div class="options">
+                    <div class="option-group">
+                        <label for="method-select">Methode de resume</label>
+                        <select id="method-select">
+                            <option value="tfidf">TF-IDF</option>
+                            <option value="textrank">TextRank</option>
+                            <option value="frequency">Frequence</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="sentences-slider">Phrases: <span id="sentences-value">5</span></label>
+                        <input type="range" id="sentences-slider" min="3" max="10" value="5">
+                    </div>
+                </div>
+
+                <button class="btn-analyze" id="analyze-btn">
+                    <span class="btn-text">Analyser</span>
+                    <span class="btn-loading" hidden>
+                        <svg class="spinner" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="30 70"/>
+                        </svg>
+                        Analyse en cours...
+                    </span>
+                </button>
+            </section>
+
+            <section class="results-section" id="results-section" hidden>
+                <h2>Resultats</h2>
+
+                <div class="result-card" id="classification-card">
+                    <h3>Classification</h3>
+                    <div class="category-badge" id="category-badge"></div>
+                    <div class="confidence" id="confidence"></div>
+                </div>
+
+                <div class="result-card" id="summary-card">
+                    <h3>Resume</h3>
+                    <ul class="summary-list" id="summary-list"></ul>
+                    <div class="summary-meta" id="summary-meta"></div>
+                </div>
+
+                <div class="result-card" id="stats-card">
+                    <h3>Statistiques</h3>
+                    <div class="stats-grid" id="stats-grid"></div>
+                </div>
+
+                <div class="extracted-text" id="extracted-text-section" hidden>
+                    <h3>Texte extrait</h3>
+                    <div class="text-preview" id="extracted-text"></div>
+                </div>
+            </section>
+
+            <div class="error-message" id="error-message" hidden></div>
+        </main>
+
+        <footer>
+            <p>CV Analyzer API v1.0.0</p>
+        </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "projet-nlp"
+version = "0.1.0"
+description = "CV Analyzer - Classification et resume de CV avec NLP"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "cv_analyzer", from = "src"}]
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+torch = "^2.1.0"
+transformers = "^4.35.0"
+datasets = "^2.14.0"
+pandas = "^2.1.0"
+python-dotenv = "^1.0.0"
+tqdm = "^4.66.0"
+scikit-learn = "^1.5.0"
+pdfplumber = "^0.10.0"
+python-docx = "^1.1.0"
+nltk = "^3.8.0"
+spacy = "^3.7.0"
+fastapi = "^0.115.0"
+uvicorn = {extras = ["standard"], version = "^0.34.0"}
+python-multipart = "^0.0.18"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+pytest-cov = "^6.0.0"
+pytest-asyncio = "^0.25.0"
+httpx = "^0.28.0"
+ruff = "^0.9.0"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
