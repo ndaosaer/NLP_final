@@ -11,7 +11,7 @@ from .routes import health, classify, summarize, analyze
 def train_model(model_path):
     import pandas as pd
     from ..classifier import CVClassifier
-    url = "https://raw.githubusercontent.com/dsrscientist/dataset1/master/Resume.csv"
+    url = "https://raw.githubusercontent.com/sahyadri-dark/Resume-Dataset/main/UpdatedResumeDataSet.csv"
     dst = Path(model_path).parent.parent / "raw" / "cv_dataset.csv"
     dst.parent.mkdir(parents=True, exist_ok=True)
     try:
